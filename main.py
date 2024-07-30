@@ -8,7 +8,6 @@ from aiogram_dialog import Dialog, DialogManager, StartMode, Window, setup_dialo
 from aiogram_dialog.widgets.kbd import Button, Row, Url, Column, Multiselect, Radio
 from aiogram_dialog.widgets.text import Const, Format, Multi, Case
 from environs import Env
-from dialogs.dialogs import python_backend_dialog
 
 env = Env()
 env.read_env()
@@ -149,7 +148,46 @@ python_learn_dialog = Dialog(
     )
 )
 
-python_backend_dialog(Dialog)
+python_backend_dialog = Dialog(
+    Window(
+        Const('Контроль версий Git'),
+        Url(Const('Git'), url=Const('https://www.youtube.com/watch?v=O00FTZDxD0o'), id='git_py'),
+        Button(Const('▶️ Вперед'), id = 'python_backend_next_1', on_click=python_go_next),
+        Button(Const('Вернуться в меню'), id = 'python_backend_1_menu', on_click=learning_button_started),
+        state=PythonBackendDialogSG.window_1
+    ),
+    Window(
+        Const('Основы python + ООП'),
+        Url(Const('База python'), url=Const('https://code-basics.com/ru/languages/python'), id = 'baza_py'),
+        Url(Const('ООП'),url=Const('https://www.youtube.com/watch?v=Z7AY41tE-3U&list=PLA0M1Bcd0w8zPwP7t-FgwONhZOHt9rz9E'), id = 'oop_py'),
+        Row(
+            Button(Const('◀️ Назад'), id = 'python_backend_back_2', on_click=python_go_back),
+            Button(Const("▶️ Вперед"), id = 'python_backend_next_2', on_click=python_go_next),
+        ),
+        Button(Const('Вернуться в меню'), id = 'python_backend_2_menu', on_click=learning_button_started),
+        state=PythonBackendDialogSG.window_2
+    ),
+    Window(
+        Const('Python FastAPI | Django'),
+        Url(Const('Fast API'), url=Const('https://www.youtube.com/playlist?list=PLeLN0qH0-mCVQKZ8-W1LhxDcVlWtTALCS'), id='fastapi_py'),
+        Url(Const('Django'), url=Const('https://www.youtube.com/watch?v=wOjicN2OXbs&list=PLBheEHDcG7-nyRX-kMT2jyudahDQ-A-Ss'), id='django_py'),
+        Row(
+            Button(Const('◀️ Назад'), id = 'python_backend_back_3', on_click=python_go_back),
+            Button(Const("▶️ Вперед"), id = 'python_backend_next_3', on_click=python_go_next),
+        ),
+        Button(Const('Вернуться в меню'), id = 'python_backend_3_menu', on_click=learning_button_started),
+        state=PythonBackendDialogSG.window_3
+    ),
+    Window(
+        Const('Что делать дальше?'),
+        Format('Вот ты и прочитал первый <code>роадмап</code>, созданный мной в рамках этого бота.\nНаверняка у тебя возник вопрос: "а что же делать дальше?"\n\nКонечно же изучать <b>сеть и интернет изнутри</b>, <b>разные БД</b> и развивать в себе <b>софт-скиллы</b>.\n\nМогу лишь посоветовать свой <code>мини-ТГК</code>, в который я буду сливать полезную информацию.'),
+        Url(Const('ТГК с курсами'), url=Const('https://t.me/waste3dinfo'), id='tgk_mini'),
+        Button(Const('◀️ Назад'), id = 'python_backend_next_4', on_click=python_go_back),
+        Button(Const('Вернуться в меню'), id = 'python_backend_4_menu', on_click=learning_button_started),
+        state=PythonBackendDialogSG.window_4,
+        getter=username_getter,
+    ),
+)
 
 python_data_science_dialog = Dialog(
    Window(
