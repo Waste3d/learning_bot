@@ -73,7 +73,7 @@ async def learning_button_started(callback: CallbackQuery, button: Button, dialo
 
 async def help_button_clicked(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
         await callback.message.answer_sticker('CAACAgIAAxkBAAEMj3Fmp9b-aBkIQ38RhudhhslpJWsILQACZwADQDHADXhtfVrKFwABjjUE')
-        await callback.message.answer('<b><code>Создатель</code>\n @waste3d</b> - Николай Сороколетов\n\n<code>Python developer | DevOps engineer</code>\n\nПо всем вопросам/с предложениями к нему')
+        await callback.message.answer('<b><code>Создатель</code>\n @aboutwaste3d</b> - Николай Сороколетов\n\n<code>Python developer | DevOps engineer</code>\n\nПо всем вопросам/с предложениями к нему')
 
 async def python_learn(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):
     await dialog_manager.start(state=PythonLearningDialogSG.window_1)
@@ -233,13 +233,18 @@ python_data_science_dialog = Dialog(
 
 python_data_eng_dialog = Dialog(
     Window(
-        Const('data engineering 1'),
-        Button(Const('▶️ Вперед'), id = 'python_dataeng_next_1', on_click=python_go_next),
-        Button(Const('Вернуться в меню'), id = 'python_dataeng_1_menu', on_click=learning_button_started),
+        Const('Python, python, python! 🐍'),
+        Url(Const('PYTHON ДЛЯ АНАЛИЗА ДАННЫХ? (eng)'), url=Const('https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1IHykI9tC7mXXhxmr'), id='data_eng_py'),
+        Button(Const('▶️ Вперед'), id = 'python_deng_next_1', on_click=python_go_next),
+        Button(Const('Вернуться в меню'), id = 'python_deng_1_menu', on_click=learning_button_started),
         state=PythonDataEngDialogSG.window_1
     ),
     Window(
-        Const('data engineering 2'),
+        Const('Apache (spark + hadoop), хз что это 🥷'),
+        Row(
+            Url(Const('Apache Spark 🦈 (Docs)'), url = Const('https://spark.apache.org/docs/latest/'), id = 'apache_py'),
+            Url(Const('Apache Hadoop (Docs)'), url = Const('https://hadoop.apache.org/docs/stable/'), id = 'apache_had_py'),
+        ),
         Row(
             Button(Const('◀️ Назад'), id = 'python_dataeng_back_2', on_click=python_go_back),
             Button(Const("▶️ Вперед"), id = 'python_dataeng_next_2', on_click=python_go_next),
@@ -248,7 +253,12 @@ python_data_eng_dialog = Dialog(
         state=PythonDataEngDialogSG.window_2
     ),
     Window(
-        Const('data engineering 3'),
+        Const('Базы данных (PostgreSQL, MySQL...)'),
+        Row(
+            Url(text=Const('PostgreSQL'), url=Const('https://www.postgresqltutorial.com/'), id='postgres_py'),
+            Url(text=Const('MySQL'), url = Const('https://www.mysqltutorial.org/'), id = 'my_sql_eng'),
+            Url(Const('MongoDB'), url = Const('https://university.mongodb.com/'), id = 'mongodb'),
+        ),
         Row(
             Button(Const('◀️ Назад'), id = 'python_dataeng_back_3', on_click=python_go_back),
             Button(Const("▶️ Вперед"), id = 'python_dataeng_next_3', on_click=python_go_next),
@@ -257,7 +267,8 @@ python_data_eng_dialog = Dialog(
         state=PythonDataEngDialogSG.window_3
     ),
     Window(
-        Const('data engineering 4'),
+        Const('Что делать дальше?\n\nСоветую почитать данный роадмап (https://github.com/shnoh-hann/fo-data-engineer-roadmap). Информацию, кстати, я брал из него. <b>ТГК!</b>'),
+        Url(Const('ТГК'), url=Const('https://t.me/waste3dinfo'), id = 'next_data_eng'),
         Button(Const('◀️ Назад'), id = 'python_dataeng_next_4', on_click=python_go_back),
         Button(Const('Вернуться в меню'), id = 'python_dataeng_4_menu', on_click=learning_button_started),
         state=PythonDataEngDialogSG.window_4
