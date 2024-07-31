@@ -191,34 +191,43 @@ python_backend_dialog = Dialog(
 
 python_data_science_dialog = Dialog(
    Window(
-        Const(''),
-        Button(Const('▶️ Вперед'), id = 'python_datascience_next_1', on_click=python_go_next),
-        Button(Const('Вернуться в меню'), id = 'python_datascience_1_menu', on_click=learning_button_started),
+        Const('Базовые навыки статистики и математики\nСуществует огромное количество курсов в интернете, которые\nрасскажут тебе об основах статистики и мат. анализа,\nя посоветую это видео с ютуба'),
+        Url(Const('Где и как учить математику ?'), url=Const('https://www.youtube.com/watch?v=6ajAbghWzrs&t=147s'), id='math_py'),
+        Button(Const('▶️ Вперед'), id = 'python_ai_next_1', on_click=python_go_next),
+        Button(Const('Вернуться в меню'), id = 'python_ai_1_menu', on_click=learning_button_started),
         state=PythonAIdevDialogSG.window_1
     ),
     Window(
-        Const('data science 2'),
+        Const('<code>Основы python + ООП.</code> Python один из самых частых\nвыборов среди всех дата сайнтистов. Он пользуется <b>наибольшей популярностью</b>\n\n(ДА, И ЗДЕСЬ ПИТОН 🐍)'),
+        Url(Const('База python'), url=Const('https://code-basics.com/ru/languages/python'), id = 'baza_py'),
+        Url(Const('ООП'),url=Const('https://www.youtube.com/watch?v=Z7AY41tE-3U&list=PLA0M1Bcd0w8zPwP7t-FgwONhZOHt9rz9E'), id = 'oop_py'),
         Row(
-            Button(Const('◀️ Назад'), id = 'python_datascience_back_2', on_click=python_go_back),
-            Button(Const("▶️ Вперед"), id = 'python_datascience_next_2', on_click=python_go_next),
+            Button(Const('◀️ Назад'), id = 'python_ai_back_2', on_click=python_go_back),
+            Button(Const("▶️ Вперед"), id = 'python_ai_next_2', on_click=python_go_next),
         ),
-        Button(Const('Вернуться в меню'), id = 'python_datascience_2_menu', on_click=learning_button_started),
+        Button(Const('Вернуться в меню'), id = 'python_ai_2_menu', on_click=learning_button_started),
         state=PythonAIdevDialogSG.window_2
     ),
     Window(
-        Const('data science 3'),
+        Const('<code>Pandas, NumPy, Scipy</code> - самый частый выбор среди сайнтистов.\nЭти библиотеки пригодятся в <b>ЛЮБОМ</b> случае во время работы.\n\nБольшая часть информации на английском 🇬🇧'),
+        Url(Const('Pandas'), url=Const('https://www.youtube.com/watch?v=ZyhVh-qRZPA&list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'), id='pandas_py'),
+        Url(Const('NumPy (арабский курс 👳🏻)'), url=Const('https://www.youtube.com/watch?v=5-5CrLmf2vk&list=PLIA_seGogbkGDYq-dnVCsELEIq_7HK7Ca'), id='num_py'),
+        Url(Const('Scipy (github tutorial)'), url=Const('https://cs231n.github.io/python-numpy-tutorial/#scipy'), id = 'scipy_py'),
         Row(
-            Button(Const('◀️ Назад'), id = 'python_datascience_back_3', on_click=python_go_back),
-            Button(Const("▶️ Вперед"), id = 'python_datascience_next_3', on_click=python_go_next),
+            Button(Const('◀️ Назад'), id = 'python_ai_back_3', on_click=python_go_back),
+            Button(Const("▶️ Вперед"), id = 'python_ai_next_3', on_click=python_go_next),
         ),
-        Button(Const('Вернуться в меню'), id = 'python_datascience_3_menu', on_click=learning_button_started),
+        Button(Const('Вернуться в меню'), id = 'python_ai_3_menu', on_click=learning_button_started),
         state=PythonAIdevDialogSG.window_3
     ),
     Window(
-        Const('data science 4'),
-        Button(Const('◀️ Назад'), id = 'python_datascience_next_4', on_click=python_go_back),
-        Button(Const('Вернуться в меню'), id = 'python_datascience_4_menu', on_click=learning_button_started),
-        state=PythonAIdevDialogSG.window_4
+       Const('Что делать дальше?'),
+        Format('Вот ты и прочитал воторой <code>роадмап</code>, созданный мной в рамках этого бота. (счет закончился)\nЧто делать дальше?\n\n Почитать еще роадмапы, изучить <b>базы данных</b>, <b>pytorch</b> и учить <b>МАТЕМАТИКУ!</b>.\n\nИ, да, опять впихну свой <code>мини-ТГК</code>, в который я буду сливать полезную инфу.'),
+        Url(Const('ТГК с курсами'), url=Const('https://t.me/waste3dinfo'), id='tgk_mini'),
+        Button(Const('◀️ Назад'), id = 'python_ai_next_4', on_click=python_go_back),
+        Button(Const('Вернуться в меню'), id = 'python_ai_4_menu', on_click=learning_button_started),
+        state=PythonAIdevDialogSG.window_4,
+        getter=username_getter,
     ),
 )
 
